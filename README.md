@@ -1,1 +1,3 @@
-# all_done_olikou_project
+# All done olikou project
+
+- [DEVOPS project](./devops_project_s21/) 
