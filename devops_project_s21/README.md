@@ -1,6 +1,6 @@
-## Devops project
+# Devops project
 
-# Devops проекты выполненные на Школе21
+## Devops проекты выполненные на Школе21
 
 1. [Linux. Основы администрирования.](./linux_administration_basics/)
 2. [Сети в Linux.](./linux_network/)
