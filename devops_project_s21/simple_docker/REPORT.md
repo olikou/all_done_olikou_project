@@ -40,7 +40,7 @@
 
 Остановить докер образ через `docker stop [container_id|container_name]`\
 Проверить, что образ остановился через `docker ps`\
-![container_stop](../misc/images/1_3.png)
+![container_stop](./images/1_3.png)
 
 Запустить докер с замапленными портами 80 и 443 на локальную машину через команду `run`\
 Проверить, что в браузере по адресу localhost:80 доступна стартовая страница nginx\
@@ -75,7 +75,7 @@
 `docker import container.tar nginx:latest`\
 Запустить импортированный контейнер\
 `docker run --rm -it -p 80:80 -p 443:443 nginx /bin/bash`\
-![import_start](./misc/images/2_4.png)
+![import_start](./images/2_4.png)
 ![import_status](./images/2_5.png)
 
 ## Part 3. Мини веб-сервер
