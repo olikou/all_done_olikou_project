@@ -18,12 +18,12 @@
 Настройка для использования без sudo\
 `$ sudo groupadd docker`\
 `$ sudo usermod -aG docker $USER`
-![no_sudo](../misc/images/1_0.png)
+![no_sudo](./images/1_0.png)
 
 **== Задание ==**\
 Взять официальный докер образ с nginx и выкачать его при помощи `docker pull`\
 Проверить наличие докер образа через `docker images`\
-![start_docker](../misc/images/1_1.png)
+![start_docker](./images/1_1.png)
 
 Запустить докер образ через docker `run -d [image_id|repository]`\
 Проверить, что образ запустился через `docker ps`\
@@ -46,24 +46,24 @@
 Проверить, что в браузере по адресу localhost:80 доступна стартовая страница nginx\
 Перезапустить докер контейнер через docker restart [container_id|container_name]\
 Проверить любым способом, что контейнер запустился
-![port-mapping](../misc/images/1_4.png)
+![port-mapping](./images/1_4.png)
 
-![browser](../misc/images/1_browser.png)
+![browser](./images/1_browser.png)
 
 ## Part 2. Операции с контейнером
 
 **== Задание ==**\
 Прочитать конфигурационный файл nginx.conf внутри докер образа через команду `exec`\
-![docker_conf](../misc/images/2_1.png)
+![docker_conf](./images/2_1.png)
 
 Создать на локальной машине файл [nginx.conf](./part_2/nginx.conf)\
 Настроить в нем по пути `/status` отдачу страницы статуса сервера nginx\
 Скопировать созданный файл nginx.conf внутрь докер образа через команду `docker cp`\
 Перезапустить nginx внутри докер образа через команду `exec`
-![config](../misc/images/2_2.png)
+![config](./images/2_2.png)
 
 Проверить, что по адресу `localhost:80/status` отдается страничка со статусом сервера nginx\
-![2-browser](../misc/images/2_browser.png)
+![2-browser](./images/2_browser.png)
 
 Экспортировать контейнер в файл container.tar через команду `export`\
 `docker export w_nginx > container.tar`\
@@ -75,8 +75,8 @@
 `docker import container.tar nginx:latest`\
 Запустить импортированный контейнер\
 `docker run --rm -it -p 80:80 -p 443:443 nginx /bin/bash`\
-![import_start](../misc/images/2_4.png)
-![import_status](../misc/images/2_5.png)
+![import_start](./misc/images/2_4.png)
+![import_status](./images/2_5.png)
 
 ## Part 3. Мини веб-сервер
 
@@ -90,7 +90,7 @@
 Получаем образ с операционной системой и запускаем его, открыв порт 81:\
 `docker pull ubuntu`\
 `docker run -it -p 81:81 --name part_3 ubuntu`\
-![image](../misc/images/3_1.png)
+![image](./images/3_1.png)
 
 И устанавливаем необходимые пакеты:\
 `apt-get update`\
@@ -104,7 +104,7 @@
 
 Затем создаём исходный файл мини-сервера [simple-server.c](./server/simple_server.c) и файл конфигурации [nginx.conf](./server/nginx.conf) и копируем их в контейнер:
 
-![src](../misc/images/3_2.png)
+![src](./images/3_2.png)
 
 Компиляция производится командой\
 `gcc -include /usr/include/fcgi_stdio.h simple_server.c -lfcgi`
@@ -114,12 +114,12 @@
 и сервер\
 `spawn-fcgi -p 8080 ./a.out `\
 Для следующего задания копируем nginx.conf в папку /nginx\
-![src](../misc/images/3_3.png)
+![src](./images/3_3.png)
 
 Результат в браузере:\
-![src](../misc/images/3_4.png)
+![src](./images/3_4.png)
 
-![src](../misc/images/3_5.png)\
+![src](./images/3_5.png)\
 
 ## Part 4. Свой докер
 
@@ -134,17 +134,17 @@ nginx можно установить внутрь докера самостоя
 
 Докер образ через docker собирается командой\
 `docker build . --tag part_4:latest`\
-![build](../misc/images/4_1.png)
+![build](./images/4_1.png)
 
 и запускается при помощи команды:\
 `docker run -it -p 80:81 part_4:latest`\
-![start](../misc/images/4_2.png)
+![start](./images/4_2.png)
 
 Проверить, что по localhost:80 доступна страничка написанного мини сервера\
-![hello](../misc/images/4_3.png)
+![hello](./images/4_3.png)
 
 Проверить, что теперь по localhost:80/status отдается страничка со статусом nginx\
-![status](../misc/images/4_4.png)
+![status](./images/4_4.png)
 
 Источник [здесь](https://docs.docker.com/engine/reference/builder/#usage)
 
@@ -162,27 +162,27 @@ nginx можно установить внутрь докера самостоя
 $ sudo dpkg -i dockle.deb && rm dockle.deb`\
 
 Запускаем Dockle:\
-![run_dockle](../misc/images/5_1.png)
+![run_dockle](./images/5_1.png)
 
 Исправить контейнер так, чтобы при проверке через dockle не было ошибок и предупреждений.
 
 Добавляем скрипты [adduser.sh](part_5/adduser.sh), [install.sh](part_5/install.sh) и [run.sh](part_5/run.sh), которые будет вызывать [Dockerfile](part_5/Dockerfile):\
-![Dockerfile](../misc/images/5_2.png)
+![Dockerfile](./images/5_2.png)
 
 Докер образ собирается командой `docker build . --tag part_5:no_tag`\
-![build](../misc/images/5_3.png)
+![build](./images/5_3.png)
 
 И запускается как и ранее `docker run -it -p 80:81 part_5:no_tag`\
-![run](../misc/images/5_4.png)
+![run](./images/5_4.png)
 
 Видим, что контейнер запущен\
-![status](../misc/images/5_5.png)
+![status](./images/5_5.png)
 
 В браузере уже знакомый ответ\
-![browser](../misc/images/5_browser.png)
+![browser](./images/5_browser.png)
 
 И запускаем Dockle:\
-![dockle](../misc/images/5_6.png)
+![dockle](./images/5_6.png)
 
 ## Part 6. Базовый Docker Compose
 
@@ -198,22 +198,22 @@ $ sudo dpkg -i dockle.deb && rm dockle.deb`\
 Проверить, что в браузере по localhost:80 отдается написанная вами страничка, как и ранее
 
 [docker-compose.yml](part_6/docker-compose.yml)\
-![docker-compose](../misc/images/6_1a.png)
+![docker-compose](./images/6_1a.png)
 
 [default.conf](part_6/default.conf)
-![docker-compose](../misc/images/6_1b.png)
+![docker-compose](./images/6_1b.png)
 
 Создаём образы командой `docker-compose build`\
-![build](../misc/images/6_2.png)
+![build](./images/6_2.png)
 
 И запускаем
-![run](../misc/images/6_3.png)
+![run](./images/6_3.png)
 
 Видно, что запущены оба контейнера:
-![status](../misc/images/6_4.png)
+![status](./images/6_4.png)
 
 И знакомый ответ сервера:\
-![browser](../misc/images/6_browser.png)
+![browser](./images/6_browser.png)
 
 И напоследок радикально очищаем диск от результатов нашего творчества:\
 `docker rm $(docker ps -aq)` - удаляем все контейнеры \
